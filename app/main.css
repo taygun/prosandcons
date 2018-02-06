@@ -1,0 +1,16 @@
+.pro-list {
+    color: #3c763d;
+}
+
+.con-list {
+    color: #a94442;
+}
+
+.large-font {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.delete-btn {
+    cursor: pointer;
+}

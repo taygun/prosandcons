@@ -1,0 +1,28 @@
+{
+  "name": "prosAndCons",
+  "authors": [
+    "taygun <taygunagiali@gmail.com>"
+  ],
+  "description": "A simple pro and cons angularjs app",
+  "main": "index.html",
+  "keywords": [
+    "bower",
+    "angular",
+    "bootsrap"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "angularjs#^1.6.9",
+    "angular-mocks": "1.6.9",
+    "bootstrap": "^3.3.7"
+  }
+}
