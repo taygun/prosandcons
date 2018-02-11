@@ -13,58 +13,18 @@
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
-    <script src="app.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="app.module.js"></script>
+    <script src="app.config.js"></script>
+
+    <script src="list/list.module.js"></script>
+    <script src="list/list.ctrl.js"></script>
+
+    <script src="detail/detail.module.js"></script>
+    <script src="detail/detail.ctrl.js"></script>
 </head>
 
 <body>
-    <div class="container" ng-controller="prosAndConsController">
-        <div class="row">
-            <div class="col-xs-6 col-xs-offset-4">
-                <form class="form-inline" ng-submit="addNewReason()">
-                    <h1 class="form-signin-heading">Evaluate your decisions</h1>
-                    <div class="form-group">
-                        <input type="text" ng-model="reasonText" class="form-control input-lg"
-                            placeholder="Add new reason" autofocus="">
-                    </div>
-                    <div class="form-group">
-                        <select class="form-control input-lg" ng-model="reasonPro"
-                            ng-options="opt.value as opt.name for opt in selectOptions">
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-lg">Add</button>
-                </form>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-6 text-center pro-div">
-                <h2 class="pro-list">Pros ({{ (reasons | filter: filterPro).length }})</h2>
-                <ul class="list-unstyled">
-                    <li ng-repeat="reason in reasons | filter: filterPro">
-                        <div class="alert alert-success large-font">
-                            <span class="glyphicon glyphicon-arrow-up pull-left" aria-hidden="true"></span>
-                            {{ reason.text }}
-                            <span class="glyphicon glyphicon-remove pull-right delete-btn" aria-hidden="true" ng-click="removeReason(reason)"></span>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-xs-6 text-center">
-                <h2 class="con-list">Cons ({{ (reasons | filter: filterCon).length }})</h2>
-                <ul class="list-unstyled">
-                    <li ng-repeat="reason in reasons | filter: filterCon">
-                        <div class="alert alert-danger large-font" role="alert">
-                            <span class="glyphicon glyphicon-arrow-down  pull-left" aria-hidden="true"></span>
-                            {{ reason.text }}
-                            <span class="glyphicon glyphicon-remove pull-right delete-btn" aria-hidden="true" ng-click="removeReason(reason)"></span>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="row">
-            <choice-result></choice-result>
-        </div>
-    </div>
+    <div ng-view></div>
 </body>
 </html>

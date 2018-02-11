@@ -1,0 +1,24 @@
+<div class="container" ng-controller="prosAndConsListController">
+    <div class="row">
+        <div class="col-xs-6 col-xs-offset-4">
+            <form class="form-inline" ng-submit="submitDecision()">
+                <h1 class="form-signin-heading">What can't you decide?</h1>
+                <input type="text" ng-model="decisionName" class="form-control input-lg"
+                    placeholder="Decison name">
+                <button type="submit" class="btn btn-primary btn-lg">Add</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <br>
+        <div class="col-xs-6 col-xs-offset-3 text-center pro-div">
+            <ul class="list-unstyled">
+                <li ng-repeat="decision in decisions">
+                    <div class="alert alert-info large-font">
+                        <a href="" ng-click="goToDetail(decision.id,decision.title)">{{decision.title}}</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

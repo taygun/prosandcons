@@ -2,7 +2,7 @@
 
 describe('prosAndConsController', function() {
 
-    beforeEach(module('prosAndConsApp'));
+    beforeEach(module('prosAndConsDetail'));
 
         it('should create a prosAndConsController with 4 elements', inject(function($controller) {
             var scope = {};

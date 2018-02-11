@@ -1,24 +1,48 @@
-var prosAndConsApp = angular.module('prosAndConsApp', []);
+'use strict';
 
-prosAndConsApp.controller('prosAndConsController', function prosAndConsController($scope) {
-    $scope.reasons = [
-        {
-            text: 'Great view',
-            pro: true
-        },
-        {
-            text: 'Closer to work',
-            pro: true
-        },
-        {
-            text: '10 minutes walk from metro station',
-            pro: true
-        },
-        {
-            text: 'No parks nearby',
-            pro: false
-        }
-    ];
+angular.module('prosAndConsDetail').
+    controller('prosAndConsController', ['$scope' , '$route', '$routeParams', 'appService', function prosAndConsController($scope, $route, $routeParams, appService) {
+    var allReasons = {
+        1: [
+            {
+                text: 'Great view',
+                pro: true
+            },
+            {
+                text: 'Closer to work',
+                pro: true
+            },
+            {
+                text: '10 minutes walk from metro station',
+                pro: true
+            },
+            {
+                text: 'No parks nearby',
+                pro: false
+            }
+        ],
+        2: [
+            {
+                text: 'Better performance',
+                pro: true,
+            },
+            {
+                text: 'More comfortable',
+                pro: true,
+            },
+            {
+                text: 'More expensive',
+                pro: false,
+            },
+        ],
+    };
+    var decisionId = $routeParams.decisionId;
+    if (allReasons.hasOwnProperty(decisionId)) {
+        $scope.reasons = allReasons[decisionId];
+    } else {
+        $scope.reasons = [];
+    }
+    $scope.decisionTitle = appService.getDecision();
 
     $scope.selectOptions = [
         {name: 'Pro', value: true},
@@ -49,7 +73,7 @@ prosAndConsApp.controller('prosAndConsController', function prosAndConsControlle
 
     var emptyReasonsText = 'Start by adding pros and cons in the above input field!';
     var proText = 'Pros outweigh the cons! You should decide in favor!';
-    var conText = 'Pros outweigh the cons! You should decide against the decision!';
+    var conText = 'Cons outweigh the pros! You should decide against the decision!';
     var equalText = 'There seems to be a tie! Try to add more reasons!';
 
     function getResultText() {
@@ -74,10 +98,9 @@ prosAndConsApp.controller('prosAndConsController', function prosAndConsControlle
         return resultText;
     };
     $scope.resultText = getResultText();
-
-}).directive('choiceResult', function() {
+}]).directive('choiceResult', function() {
     return {
         restrict: 'E',
-        templateUrl: 'result.html',
+        templateUrl: 'detail/result.html',
     };
 });
